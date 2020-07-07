@@ -8,10 +8,22 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-HOST=10.254.2.3:8080
+# If LNDHOSTNAME not set then LNDHOSTNAME=lnd
+if [ -z $LNDHOSTNAME ]; then
+    LNDHOSTNAME=lnd
+fi
+
+# This is the LND HOSTIPPORT for rest interface
+# If HOSTIPPORT not set the HOST=10.254.2.3:8080
+if [ -z $HOST ]; then
+    HOSTIPPORT=10.254.2.3:8080
+fi
+
 TLS_CERT=/lnd/tls.cert
 LNDPASSWORD_PATH=/secrets/lnd-password.txt
-if [ ! -z $NETWORK ]; then
+
+# NETWORK = mainnet by default (if not set)
+if [ -z $NETWORK ]; then
     NETWORK=mainnet
 fi
 MACAROON_PATH=/lnd/data/chain/bitcoin/$NETWORK/admin.macaroon
@@ -27,20 +39,22 @@ lncurl() {
 	  --cacert "${TLS_CERT}"  \
 	  --header "Grpc-Metadata-macaroon: ${MACAROON}"  \
 	  --data "${data}"  \
-	  "https://${HOST}/v1/${url_path}"
+	  "https://${HOSTIPPORT}/v1/${url_path}"
 }
 
 echo "Starting LND Unlock"
 echo "Network: $NETWORK"
+echo "Hostname: $LNDHOSTNAME"
+echo "Host/IP: $HOSTIPPORT"
 echo "Macaroon Path: $MACAROON_PATH"
 
 while true; do
 	# First make sure that port is open
-	while ! nc -z lnd 8080; do
-		>&2 echo "Waiting for ${HOST} port to open…"
+	while ! nc -z $LNDHOSTNAME 8080; do
+		>&2 echo "Waiting for ${LNDHOSTNAME} port to open…"
 		sleep 3
 	done
-	>&2 echo "Port ${HOST} is open"
+	>&2 echo "Port ${LNDHOSTNAME} is open"
 
 	# Wait a bit more in case the port was just opened
 	sleep 1
@@ -50,7 +64,7 @@ while true; do
 			PASS="$(cat /secrets/lnd-password.txt | tr -d '\n' | base64 | tr -d '\n')"
 			UNLOCK_PAYLOAD="$(jq -nc --arg wallet_password ${PASS} '{$wallet_password}')"
 			# Try getinfo then unlock
-			>&2 echo "Trying ${HOST}/getinfo…"
+			>&2 echo "Trying ${LNDHOSTNAME}/getinfo…"
 			INFO=$(lncurl getinfo)
 			if [ "$?" = "0" ]; then
 				>&2 echo "Response: ${INFO}"
