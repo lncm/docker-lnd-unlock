@@ -1,5 +1,8 @@
 # LND Unlock Container
 
+![Docker Pulls Count](https://img.shields.io/docker/pulls/lncm/lnd-unlock.svg?style=flat)
+
+
 This is a helper container for unlocking LND for unattended installs. 
 
 For best results use this within docker-compose
