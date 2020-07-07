@@ -17,8 +17,10 @@ fi
 MACAROON_PATH=/lnd/data/chain/bitcoin/$NETWORK/admin.macaroon
 
 lncurl() {
-	MACAROON="$(xxd -p $MACAROON_PATH | tr -d '\n')"
-	url_path=$1
+	#MACAROON="$(xxd -p $MACAROON_PATH | tr -d '\n')"
+	MACAROON=`xxd -p $MACAROON_PATH | tr -d '\n'`
+	echo "Macaroon: $MACAROON"
+    url_path=$1
 	data=$2
 
 	curl  --fail  --silent  --show-error  \
@@ -27,6 +29,10 @@ lncurl() {
 	  --data "${data}"  \
 	  "https://${HOST}/v1/${url_path}"
 }
+
+echo "Starting LND Unlock"
+echo "Network: $NETWORK"
+echo "Macaroon Path: $MACAROON_PATH"
 
 while true; do
 	# First make sure that port is open
