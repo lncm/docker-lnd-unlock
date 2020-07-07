@@ -7,6 +7,18 @@ This is a helper container for unlocking LND for unattended installs.
 
 For best results use this within docker-compose
 
+
+## Clone directory
+
+```bash
+docker pull lncm/lnd-unlock
+```
+
+## Pathnames Required
+
+- /lnd/data/chain/bitcoin/$NETWORK/admin.macaroon (Where: $NETWORK is the network. This is the LND default path. Best to leave this alone)
+- /secrets/lnd-password.txt (This is the unlock password. Must be readable by this container)
+
 ## Environment Variables
 
 - LNDHOSTNAME (default: lnd) : This is the hostname for the lnd instance. Can be an IP
