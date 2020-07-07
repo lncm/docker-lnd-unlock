@@ -14,7 +14,7 @@ LNDPASSWORD_PATH=/secrets/lnd-password.txt
 if [ ! -z $NETWORK ]; then
     NETWORK=mainnet
 fi
-MACAROON_PATH=/lnd/data/chain/bitcoin/mainnet/admin.macaroon
+MACAROON_PATH=/lnd/data/chain/bitcoin/$NETWORK/admin.macaroon
 
 lncurl() {
 	MACAROON="$(xxd -p $MACAROON_PATH | tr -d '\n')"
