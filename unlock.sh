@@ -11,10 +11,13 @@
 HOST=10.254.2.3:8080
 TLS_CERT=/lnd/tls.cert
 LNDPASSWORD_PATH=/secrets/lnd-password.txt
+if [ ! -z $NETWORK ]; then
+    NETWORK=mainnet
+fi
 MACAROON_PATH=/lnd/data/chain/bitcoin/mainnet/admin.macaroon
 
 lncurl() {
-	MACAROON="$(xxd -p /lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')"
+	MACAROON="$(xxd -p $MACAROON_PATH | tr -d '\n')"
 	url_path=$1
 	data=$2
 
