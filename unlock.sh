@@ -14,8 +14,8 @@ if [ -z $LNDHOSTNAME ]; then
 fi
 
 # This is the LND HOSTIPPORT for rest interface
-# If HOSTIPPORT not set the HOST=10.254.2.3:8080
-if [ -z $HOST ]; then
+# If HOSTIPPORT not set the HOSTIPPORT=10.254.2.3:8080
+if [ -z $HOSTIPPORT ]; then
     HOSTIPPORT=10.254.2.3:8080
 fi
 
