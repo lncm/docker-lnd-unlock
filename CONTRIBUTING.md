@@ -2,11 +2,11 @@
 
 ## So you found something that you want changed?
 
-### Fork this Repository
+### 1. Fork this Repository
 
 Press the fork button and create the repo inside your own folder
 
-### Go to your forked repo and clone it
+### 2. Clone the forked repo
 
 Next go to your cloned repository and clone it
 
@@ -19,7 +19,7 @@ git clone git@github.com:nolim1t/docker-lnd-unlock.git lnd-unlock
 
 ```
 
-### Create a branch
+### 3. Create a branch
 
 ```bash
 # this creates a branch called 'bugfix-branchname'
@@ -28,11 +28,11 @@ git checkout -b bugfix-branchname
 
 The above command will checkout a new branch with the branchname you have specified.
 
-### Do your changes
+### 4. Do your changes
 
 Do your changes as prescribed.
 
-### When you are finished
+### 5. When you are finished
 
 Commit it as you have probably already done, then push the branch to your fork.
 
