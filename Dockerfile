@@ -8,4 +8,6 @@ COPY unlock.sh /bin/unlock
 
 RUN chmod +x /bin/unlock
 
+STOPSIGNAL SIGINT
+
 ENTRYPOINT ["unlock"]

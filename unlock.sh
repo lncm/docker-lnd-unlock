@@ -8,6 +8,9 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+# Trap signal SIGINT - Explicitly define it
+trap exit INT
+
 # If LNDHOSTNAME not set then LNDHOSTNAME=lnd
 if [ -z $LNDHOSTNAME ]; then
     LNDHOSTNAME=lnd
