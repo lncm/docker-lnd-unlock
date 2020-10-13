@@ -28,6 +28,13 @@ docker pull lncm/lnd-unlock
 ## Quick run
 
 ```bash
-docker run -d --rm lncm/lnd-unlock:1.0.0 --name=lnd-unlock -v $HOME/lnd:/lnd -v $HOME/secrets:/secrets -e HOSTIPPORT=10.254.2.3:8080 -e NETWORK=mainnet -e LNDHOSTNAME=10.254.2.3
+docker run -d --rm \
+            lncm/lnd-unlock:1.0.2 \
+            --name=lnd-unlock \
+            -v $HOME/lnd:/lnd \
+            -v $HOME/secrets:/secrets \
+            -e HOSTIPPORT=10.254.2.3:8080 \
+            -e NETWORK=mainnet \
+            -e LNDHOSTNAME=10.254.2.3
 ```
 
