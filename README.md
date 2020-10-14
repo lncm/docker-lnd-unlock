@@ -1,6 +1,8 @@
 # LND Unlock Container
 
-![Docker Pulls Count](https://img.shields.io/docker/pulls/lncm/lnd-unlock.svg?style=flat)
+[![Build on deploy](https://github.com/lncm/docker-lnd-unlock/workflows/Docker%20build%20on%20tag/badge.svg)](https://github.com/lncm/docker-lnd-unlock/actions?query=workflow%3A%22Docker+build+on+tag%22)
+![Version](https://img.shields.io/github/v/release/lncm/docker-lnd-unlock?sort=semver) 
+[![Docker Pulls Count](https://img.shields.io/docker/pulls/lncm/lnd-unlock.svg?style=flat)](https://hub.docker.com/r/lncm/lnd-unlock)
 
 
 This is a helper container for unlocking LND for unattended installs. 
