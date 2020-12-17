@@ -11,6 +11,9 @@
 # Trap signal SIGINT - Explicitly define it
 trap exit INT
 
+# Check every 30 seconds by default (or if specified)
+SLEEPTIME="${SLEEPTIME:-30}"                     # Default sleep: 30
+
 # If LNDHOSTNAME not set then LNDHOSTNAME=lnd
 if [ -z $LNDHOSTNAME ]; then
     LNDHOSTNAME=lnd
@@ -87,5 +90,5 @@ while true; do
 		>&2 echo "password file doesn't exist"
 	fi
 
-	sleep 30
+    sleep "$SLEEPTIME"
 done
