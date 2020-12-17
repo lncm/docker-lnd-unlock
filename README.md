@@ -5,10 +5,9 @@
 [![Docker Pulls Count](https://img.shields.io/docker/pulls/lncm/lnd-unlock.svg?style=flat)](https://hub.docker.com/r/lncm/lnd-unlock)
 
 
-This is a helper container for unlocking LND for unattended installs. 
+This is a [helper container](https://hub.docker.com/r/lncm/lnd-unlock) for unlocking LND for unattended installs. 
 
-For best results use this within docker-compose
-
+For best results use this within docker-compose.
 
 ## Clone directory
 
