@@ -9,25 +9,39 @@ This is a [helper container](https://hub.docker.com/r/lncm/lnd-unlock) for unloc
 
 For best results use this within docker-compose.
 
-## Clone directory
+## Deprecation notice
+
+This is deprecated because there is a feature in LND v0.13.0-beta which allows for unlocking
+
+To use simply just add your desired password in the config file.
+
+### Example
+
+```
+wallet-unlock-password-file=/path/to/passwordfile
+wallet-unlock-allow-create=true
+
+```
+
+# Clone directory
 
 ```bash
 docker pull lncm/lnd-unlock
 ```
 
-## Pathnames Required
+# Pathnames Required
 
 - /lnd/data/chain/bitcoin/$NETWORK/admin.macaroon (Where: $NETWORK is the network. This is the LND default path. Best to leave this alone)
 - /secrets/lnd-password.txt (This is the unlock password. Must be readable by this container)
 
-## Environment Variables
+# Environment Variables
 
 - LNDHOSTNAME (default: lnd) : This is the hostname for the lnd instance. Can be an IP
 - HOSTIPPORT (default: 10.254.2.3:8080) : This is the IP and port for the LND rest interface.
 - NETWORK (default: mainnet) : This is the network that LND uses and how to find the correct macaroon file
 - SLEEPTIME (default: 30) : This is how often we will check to see if its unlocked. There is a default value so you do not need to set it.
 
-## Quick run
+# Quick run
 
 ```bash
 docker run -d --rm \
